@@ -14,6 +14,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix('/')->group(function () {
+
+
+    Route::get('ping', function () {
+        return "API OK";
+    });
+
+    //login
+    Route::post('login', 'AuthController@login');
+
+
+    Route::group(['middleware' => 'auth:api'], function () {
+        //AuthController
+        Route::post('logout', 'AuthController@logout');
+        
+        //PreferenseController
+        Route::get('get-departiments', 'PreferenseController@getDepartiments');
+
+        //DocumentController
+        Route::post('add-document', 'DocumentController@addDocumentation'); //getDocuments
+        Route::get('get-documents', 'DocumentController@getDocuments'); //getDocuments
+        
+    });
 });
