@@ -70,8 +70,6 @@ class CreateDepartmentsTable extends Migration
             $user->dept_id = $obj->dept_id;
             $user->save();
         }
-       
-
         
     }
 

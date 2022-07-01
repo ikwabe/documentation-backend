@@ -28,13 +28,13 @@ Route::prefix('/')->group(function () {
     Route::group(['middleware' => 'auth:api'], function () {
         //AuthController
         Route::post('logout', 'AuthController@logout');
-        
+
         //PreferenseController
         Route::get('get-departiments', 'PreferenseController@getDepartiments');
-
         //DocumentController
-        Route::post('add-document', 'DocumentController@addDocumentation'); //getDocuments
-        Route::get('get-documents', 'DocumentController@getDocuments'); //getDocuments
-        
+        Route::post('add-document', 'DocumentController@addDocumentation');
+        Route::get('get-documents', 'DocumentController@getDocuments');
+        Route::post('update-documentation', 'DocumentController@updateDocumentation');
+        Route::post('delete-file', 'DocumentController@deleteFile');
     });
 });
